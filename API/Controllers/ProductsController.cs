@@ -23,7 +23,7 @@ namespace API.Controllers
             //return Ok(products);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             return await context.Products.FindAsync(id);

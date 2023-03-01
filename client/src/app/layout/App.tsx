@@ -1,7 +1,7 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
-import Catalog from "../../features/catalog/Catalog";
+import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
 //class vs functional component
@@ -27,7 +27,7 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode}  handleThemeChange={handleThemeChange}/>
       <Container>
-        <Catalog />
+        <Outlet />
       </Container>
     </ThemeProvider>
   );
