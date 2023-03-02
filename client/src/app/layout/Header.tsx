@@ -10,7 +10,6 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import path from "path";
 import { NavLink } from "react-router-dom";
 const midLinks = [
   { title: "catalog", path: "/catalog" },

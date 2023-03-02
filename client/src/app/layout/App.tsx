@@ -3,6 +3,8 @@ import { Container } from "@mui/system";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 //class vs functional component
 function App() {
@@ -21,9 +23,9 @@ function App() {
     setDarkMode(!darkMode);
   }
 
-  
-  return (
+   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="bottom-right" hideProgressBar theme="colored"/>
       <CssBaseline />
       <Header darkMode={darkMode}  handleThemeChange={handleThemeChange}/>
       <Container>
