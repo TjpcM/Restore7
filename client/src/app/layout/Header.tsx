@@ -10,7 +10,8 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useStoreContext } from "../api/context/StoreContext";
 const midLinks = [
   { title: "catalog", path: "/catalog" },
   { title: "about", path: "/about" },
@@ -36,6 +37,10 @@ interface Props {
   handleThemeChange: () => void;
 }
 export default function Header({ darkMode, handleThemeChange }: Props) {
+  const {basket} =useStoreContext();
+  const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity, 0);// for each item in the array it will 
+                                                                               //add quantity, sum initial value will be 0
+
   //sx allows to define css properties, mb - margin bottom
   return (
     <AppBar position="static" sx={{ mb: 4 }}>
@@ -60,8 +65,8 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           ))}
         </List>
         <Box display='flex' alignItems='center'>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-            <Badge badgeContent="4" color="secondary">
+          <IconButton component ={Link} to='/basket' size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
+            <Badge badgeContent={itemCount} color="secondary">
               <ShoppingCart />
             </Badge>
           </IconButton>

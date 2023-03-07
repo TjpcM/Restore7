@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './app/router/Routes';
+import { StoreProvider } from './app/api/context/StoreContext';
 
 
 
@@ -17,8 +18,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <StoreProvider>
+      <RouterProvider router={router} />
+    </StoreProvider>
+   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
