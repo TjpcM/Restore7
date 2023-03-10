@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-import { useStoreContext } from "../api/context/StoreContext";
+import { useAppSelector } from "../store/configureStore";
 const midLinks = [
   { title: "catalog", path: "/catalog" },
   { title: "about", path: "/about" },
@@ -37,7 +37,8 @@ interface Props {
   handleThemeChange: () => void;
 }
 export default function Header({ darkMode, handleThemeChange }: Props) {
-  const {basket} =useStoreContext();
+  //const {basket} =useStoreContext();
+  const { basket} = useAppSelector(state => state.basket);
   const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity, 0);// for each item in the array it will 
                                                                                //add quantity, sum initial value will be 0
 
