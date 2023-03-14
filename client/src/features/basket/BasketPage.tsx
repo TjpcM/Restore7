@@ -9,11 +9,11 @@ import {  addBasketItemAsync, removeBasketItemAsync } from "./basketSlice";
 import BasketSummary from "./BasketSummary";
 
   
-    const tableHead=[{tittle:'Product' ,align:'left'},
-                     {tittle:'Price'   ,align:'right'},
-                     {tittle:'Quantity',align:'right'},
-                     {tittle:'Subtotal',align:'right'},
-                     {tittle:''       ,align:'center'}]
+    const tableHead=[{title:'Product' ,alignment:'left'},
+                     {title:'Price'   ,alignment:'right'},
+                     {title:'Quantity',alignment:'center'},
+                     {title:'Subtotal',alignment:'right'},
+                     {title:''        ,alignment:'right'}]
 
 
                   
@@ -45,9 +45,10 @@ import BasketSummary from "./BasketSummary";
       <>
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} >
-          <TableHead>
-            <TableRow>
-            {tableHead.map(({tittle,align}) => (<TableCell key={tittle}  >{tittle}</TableCell>))}
+          
+          <TableHead >
+            <TableRow >
+            {tableHead.map(({title, alignment}) => (<TableCell variant="head" key={title} sx={{alignItems:{alignment}}}  >{title}  </TableCell>))}
            </TableRow>
           </TableHead>
           <TableBody>
