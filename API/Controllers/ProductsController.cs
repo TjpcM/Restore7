@@ -1,16 +1,13 @@
-using System.Text.Json;
 using API.Data;
 using API.Entities;
 using API.Extensions;
 using API.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using SQLitePCL;
 
 namespace API.Controllers
 {
-     public class ProductsController : BaseApiController
+    public class ProductsController : BaseApiController
     {
         private readonly StoreContext context;
         public ProductsController(StoreContext context)

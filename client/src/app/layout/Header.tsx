@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
+import SignedInMenu from "./SignedInMenu";
 const midLinks = [
   { title: "catalog", path: "/catalog" },
   { title: "about", path: "/about" },
@@ -39,6 +40,7 @@ interface Props {
 export default function Header({ darkMode, handleThemeChange }: Props) {
   //const {basket} =useStoreContext();
   const { basket} = useAppSelector(state => state.basket);
+  const {user} = useAppSelector(state => state.account);
   const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity, 0);// for each item in the array it will 
                                                                                //add quantity, sum initial value will be 0
 
@@ -71,14 +73,18 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
               <ShoppingCart />
             </Badge>
           </IconButton>
-
-          <List sx={{ display: "flex" }}>
+          {user ? (
+          <SignedInMenu/>) :(
+            <List sx={{ display: "flex" }}>
             {rightLinks.map(({ title, path }) => (
               <ListItem key={path} component={NavLink} to={path} sx={navStyles}>
                 {title.toUpperCase()}
               </ListItem>
             ))}
           </List>
+
+           ) 
+          }
         </Box>
       </Toolbar>
     </AppBar>
