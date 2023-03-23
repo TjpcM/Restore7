@@ -6,7 +6,6 @@ using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -54,7 +53,7 @@ builder.Services.AddIdentityCore<User>(opt =>
 {
  opt.User.RequireUniqueEmail = true;
 }) 
-     .AddRoles<IdentityRole>()
+     .AddRoles<Role>()
      .AddEntityFrameworkStores<StoreContext>(); 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
      .AddJwtBearer(opt =>
