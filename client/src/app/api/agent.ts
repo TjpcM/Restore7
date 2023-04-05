@@ -28,6 +28,7 @@ axios.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
+    console.log(error);
     const { data, status } = error.response as AxiosResponse;
     switch (status) {
       case 400:
@@ -93,12 +94,17 @@ const Orders ={
   fetch: (id:number) => requests.get(`orders/${id}`),
   create:(value:any) => requests.post('orders', value)
 }
+
+const Payments = {
+  createPaymentIntent: () => requests.post('payments', {})
+}
 const agent = {
   Catalog,
   TestErrors,
   Basket,
   Account,
-  Orders
+  Orders,
+  Payments
 };
 
 export default agent;

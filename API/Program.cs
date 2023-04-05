@@ -71,6 +71,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<TokenService>();//AddScoped - scoped to life time of request
+builder.Services.AddScoped<PaymentService>();
 
 var app = builder.Build();
 
